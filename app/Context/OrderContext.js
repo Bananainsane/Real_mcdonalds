@@ -45,10 +45,13 @@ export const OrderProvider = ({ children }) => {
     };
 
     const totalTurnover = () => {
-        setturnover(order.reduce((acc, item) => acc + item.price * item.quantity, 0));
-    }
+        setturnover(
+            order.reduce((acc, item) => acc + item.price * item.quantity, 0)
+        );
+    };
 
     const confirmOrder = () => {
+        window.confirm(`Are you sure you want to confirm your order?`);
         setOrder((prev) => prev.filter((item) => item.name !== item.name));
         setturnover(turnover + total);
         setOrderNumber(orderNumber + 1);

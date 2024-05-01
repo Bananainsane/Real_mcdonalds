@@ -40,7 +40,9 @@ export default function Menu() {
                 McDonald's Menu
             </h1>
             <div className="text-2xl font-bold text-red-600 text-right mb-4 flex justify-between">
-                <div className="text-right ml-4">Order Number: {orderNumber}</div>
+                <div className="text-right ml-4">
+                    Order Number: {orderNumber}
+                </div>
                 total turnover: ${turnover}
             </div>
             {Object.keys(menuItems).map((category) => (

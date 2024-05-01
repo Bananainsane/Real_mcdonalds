@@ -3,7 +3,8 @@ import React from 'react';
 import { useOrder } from '../Context/OrderContext';
 
 export default function OrderSummary() {
-    const { order, removeFromOrder, removeAllFromOrder, confirmOrder, total } = useOrder();
+    const { order, removeFromOrder, removeAllFromOrder, confirmOrder, total } =
+        useOrder();
 
     return (
         <div className="px-4 py-5 mt-5 bg-white shadow-md rounded-lg">
@@ -22,18 +23,20 @@ export default function OrderSummary() {
                             />
                             {item.name} - ${item.price} x {item.quantity}
                         </span>
-                        <button
-                            className="text-red-600 hover:text-red-800"
-                            onClick={() => removeAllFromOrder(item.name)}
-                        >
-                            Remove ALL
-                        </button>
-                        <button
-                            className="text-red-600 hover:text-red-800"
-                            onClick={() => removeFromOrder(item.name)}
-                        >
-                            Remove
-                        </button>
+                        <div className="flex gap-x-20">
+                            <button
+                                className="text-red-600 hover:text-red-800"
+                                onClick={() => removeAllFromOrder(item.name)}
+                            >
+                                Remove ALL
+                            </button>
+                            <button
+                                className="text-red-600 hover:text-red-800"
+                                onClick={() => removeFromOrder(item.name)}
+                            >
+                                Remove
+                            </button>
+                        </div>
                     </li>
                 ))}
             </ul>
