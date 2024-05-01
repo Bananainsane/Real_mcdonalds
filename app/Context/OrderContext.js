@@ -9,6 +9,8 @@ export function useOrder() {
 
 export const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
+    const [orderNumber, setOrderNumber] = useState(1);
+    const [turnover, setturnover] = useState(0);
 
     const addToOrder = (newItem) => {
         setOrder((prev) => {
@@ -32,7 +34,6 @@ export const OrderProvider = ({ children }) => {
             prev.reduce((acc, item) => {
                 if (item.name === itemName) {
                     if (item.quantity > 1) {
-                        // Decrease the quantity
                         acc.push({ ...item, quantity: item.quantity - 1 });
                     }
                 } else {
@@ -43,16 +44,45 @@ export const OrderProvider = ({ children }) => {
         );
     };
 
-    
-    const removeAllFromOrder = (itemName) => {
-        if (window.confirm(`Are you sure you want to remove all ${itemName} from the order?`)) {
-            setOrder((prev) => prev.filter((item) => item.name !== itemName));
-        }
+    const totalTurnover = () => {
+        setturnover(order.reduce((acc, item) => acc + item.price * item.quantity, 0));
     }
 
+    const confirmOrder = () => {
+        setOrder((prev) => prev.filter((item) => item.name !== item.name));
+        setturnover(turnover + total);
+        setOrderNumber(orderNumber + 1);
+    };
+
+    const total = order.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+    );
+
+    const removeAllFromOrder = (itemName) => {
+        if (
+            window.confirm(
+                `Are you sure you want to remove all ${itemName} from the order?`
+            )
+        ) {
+            setOrder((prev) => prev.filter((item) => item.name !== itemName));
+        }
+    };
 
     return (
-        <OrderContext.Provider value={{ order, addToOrder, removeFromOrder, removeAllFromOrder }}>
+        <OrderContext.Provider
+            value={{
+                order,
+                addToOrder,
+                removeFromOrder,
+                removeAllFromOrder,
+                totalTurnover,
+                confirmOrder,
+                total,
+                turnover,
+                orderNumber,
+            }}
+        >
             {children}
         </OrderContext.Provider>
     );

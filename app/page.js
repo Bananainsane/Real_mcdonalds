@@ -7,7 +7,7 @@ import OrderSummary from './Components/Ordersummary';
 export default function HomePage() {
     return (
         <OrderProvider>
-            <div> 
+            <div>
                 <Menu />
                 <OrderSummary />
             </div>

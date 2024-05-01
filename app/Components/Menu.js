@@ -1,9 +1,9 @@
 // use client
 import React from 'react';
-import { useOrder } from '../Context/OrderContext'; // Correct path
+import { useOrder } from '../Context/OrderContext';
 
 export default function Menu() {
-    const { addToOrder } = useOrder();
+    const { addToOrder, turnover, orderNumber } = useOrder();
 
     const menuItems = {
         burgers: [
@@ -39,6 +39,10 @@ export default function Menu() {
             <h1 className="text-2xl font-bold text-red-600 text-center mb-4">
                 McDonald's Menu
             </h1>
+            <div className="text-2xl font-bold text-red-600 text-right mb-4 flex justify-between">
+                <div className="text-right ml-4">Order Number: {orderNumber}</div>
+                total turnover: ${turnover}
+            </div>
             {Object.keys(menuItems).map((category) => (
                 <div
                     key={category}
@@ -49,7 +53,10 @@ export default function Menu() {
                     </h3>
                     <div className="flex flex-wrap gap-2 mt-2">
                         {menuItems[category].map((item) => (
-                            <div key={item.name} className="text-center">
+                            <div
+                                key={item.name}
+                                className="text-center border shadow-md px-4 py-5 bg-gray-50"
+                            >
                                 <img
                                     src={item.image}
                                     alt={item.name}

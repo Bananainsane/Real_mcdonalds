@@ -3,16 +3,7 @@ import React from 'react';
 import { useOrder } from '../Context/OrderContext';
 
 export default function OrderSummary() {
-    const { order, removeFromOrder, removeAllFromOrder } = useOrder();
-
-    const confirmOrder = () => {
-        alert('Order confirmed! Your meal will be ready soon.');
-    };
-
-    const total = order.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-    );
+    const { order, removeFromOrder, removeAllFromOrder, confirmOrder, total } = useOrder();
 
     return (
         <div className="px-4 py-5 mt-5 bg-white shadow-md rounded-lg">
