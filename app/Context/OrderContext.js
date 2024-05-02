@@ -62,15 +62,11 @@ export const OrderProvider = ({ children }) => {
         0
     );
 
-    const removeAllFromOrder = (itemName) => {
-        if (
-            window.confirm(
-                `Are you sure you want to remove all ${itemName} from the order?`
-            )
-        ) {
-            setOrder((prev) => prev.filter((item) => item.name !== itemName));
-        }
-    };
+    const removeAllFromOrder = (itemName) =>
+        setOrder(
+            (prev) => prev.filter((item) => item.name !== itemName),
+            [`Are you sure you want to remove all ${itemName} from the order?`]
+        );
 
     return (
         <OrderContext.Provider
