@@ -53,7 +53,7 @@ export default function Menu() {
                     <h3 className="text-lg font-semibold text-red-600">
                         {category.charAt(0).toUpperCase() + category.slice(1)}
                     </h3>
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div className="flex flex-wrap gap-3 mt-2">
                         {menuItems[category].map((item) => (
                             <div
                                 key={item.name}

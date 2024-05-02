@@ -7,8 +7,8 @@ import OrderSummary from './Components/Ordersummary';
 export default function HomePage() {
     return (
         <OrderProvider>
-            <div>
-                <Menu />
+            <Menu />
+            <div className="sticky bottom-0">
                 <OrderSummary />
             </div>
         </OrderProvider>

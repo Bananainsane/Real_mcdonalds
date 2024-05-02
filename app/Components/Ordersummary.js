@@ -7,7 +7,7 @@ export default function OrderSummary() {
         useOrder();
 
     return (
-        <div className="px-4 py-5 mt-5 bg-white shadow-md rounded-lg">
+        <div className="px-4 py-5  bg-white shadow-md border bg-yellow-50">
             <h2 className="text-lg font-bold text-red-600">Your Order</h2>
             <ul className="list-disc pl-5">
                 {order.map((item, index) => (
